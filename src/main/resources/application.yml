@@ -1,0 +1,50 @@
+server:
+  port: 8088
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/journal_crawler?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+    username: root
+    password: A1s123qaz
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+
+  freemarker:
+    template-loader-path: classpath:/templates/
+    suffix: .ftl
+    cache: false
+    charset: UTF-8
+    content-type: text/html
+    check-template-location: true
+    expose-request-attributes: false
+    expose-session-attributes: false
+    expose-spring-macro-helpers: false
+
+    # 静态资源配置
+    mvc:
+      static-path-pattern: /js/**
+    web:
+      resources:
+        static-locations: classpath:/static/js/
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+webDriver:
+  path: D:\tools-periodical-parser\chromedriver-win64\chromedriver.exe
+  chromePath: D:\tools-periodical-parser\chrome-win64\chrome.exe
+
+fileStore:
+  path: D:\store-journal-crawler
